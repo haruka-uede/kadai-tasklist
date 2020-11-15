@@ -6,10 +6,20 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <a class="nav-item nav-link active" href="#">Home</a>
-                <a class="nav-item nav-link" href="#">SignUp</a>
-                <a class="nav-item nav-link" href="#">LogIn</a>
-                <a class="nav-item nav-link" href="#">LogOut</a>
+                <% if logged_in? %>
+                    <li class="nav-item"><%= link_to 'Users', users_path, class: 'nav-link' %></li>
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><%= current_user.name %></a>
+                        <ul class="dropdown-menu">
+                            <li class="dropdown-item"><%= link_to 'My profile', user_path(current_user) %></li>
+                            <li class="dropdown-divider"></li>
+                            <li class="dropdown-item"><%= link_to 'Logout', logout_path, method: :delete %></li>
+                        </ul>
+                    </li>
+                <% else %>
+                    <a class="nav-item"><%= link_to 'Signup', signup_path, class: 'nav-link' %></a>
+                    <a class="nav-item"><%= link_to 'Login', login_path, class: 'nav-link' %></a>
+                <% end %>
             </div>
         </div>
     </nav>
