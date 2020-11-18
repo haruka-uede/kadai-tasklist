@@ -1,21 +1,6 @@
     <h1 class="h3 my-3">ログイン中: <%= current_user.name %> さん</h1>
     <div class="row">
         <div class="col-4">
-<%
-=begin
-%>
-            <%= form_with(model: @task, local: true) do |f| %>
-                <div class="form-group">
-                    <%= f.label :status, 'ステータス' %>
-                    <%= f.text_field :status, class: 'form-control' %>
-                    <%= f.label :content, 'タスク' %>
-                    <%= f.text_area :content, class: 'form-control', rows: 5 %>
-                </div>
-                <%= f.submit 'POST', class: 'btn btn-primary btn-block' %>
-            <% end %>
-<%
-=end
-%>
         <%= link_to '新規タスクの投稿', new_task_path, class: 'btn btn-block btn-primary btn-lg' %>
         </div>
         
@@ -25,29 +10,3 @@
             <% end %>            
         </div>
     </div>
-
-<%
-=begin
-%>
-<% else %>
-    
-    <div class="row mt-5">
-        <div class="text-center col-6 my-5">登録済の人はコチラ
-            <%= link_to 'Log in!', "#", class: 'btn btn-primary btn-lg' %>
-        </div>
-        <div class="text-center col-6 my-5"> 登録がまだの人はコチラ
-            <%= link_to 'Sign up!', signup_path, class: 'btn btn-primary btn-lg' %>
-        </div>
-    
-    
-        <h1>タスク一覧</h1>
-        <ul>
-            <% @tasks.each do |task| %>
-                <li><%= link_to task.id, task %> : <%= task.status %> &gt; <%= task.content %></li>
-            <% end %>
-        </ul>
-        <%= link_to '新規タスクの投稿', new_task_path %>
-    </div>
-<%
-=end
-%>
