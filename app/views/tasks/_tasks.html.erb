@@ -1,9 +1,0 @@
-<ol>
-    <% task.errors.full_messages.each do |msg| %>
-        <li><%= link_to task.user.name, user_path(task.user) %> <span class="text-muted">POSTED AT <=% micropost.created_at %></span></li>
-        <li><%= msg %></li>
-    <% end %>
-
-    <%= pagenate tasks %>
-</ol>
-
